@@ -1,1 +1,0 @@
-# Divin3Tech.github.io
