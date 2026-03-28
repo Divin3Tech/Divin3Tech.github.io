@@ -758,7 +758,7 @@
                 <li><a href="#why">Why Us</a></li>
                 <li><a href="#process">Our Process</a></li>
                 <li><a href="#credentials">Credentials</a></li>
-                <li><a href="#contact">Get Started</a></li>
+                <li><a href="#contact">Free Resources</a></li>
             </ul>
         </div>
     </nav>
@@ -784,7 +784,7 @@
             <div class="section-header">
                 <div class="section-eyebrow">What We Offer</div>
                 <h2 class="section-title">Professional Services</h2>
-                <p class="section-subtitle">Comprehensive GRC consulting designed to get you compliant &amp; audit-ready efficiently.</p>
+                <p class="section-subtitle">Comprehensive GRC consulting designed to get you audit-ready &amp; compliant efficiently.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -1153,7 +1153,7 @@
                     <h3>Direct Contact</h3>
                     <div class="contact-info-item">
                         <p class="contact-info-label">Email Us</p>
-                        <a href="mailto:consulting@divin3tech.com" style="border-bottom: 1px solid var(--gold);"><span class="__cf_email__" data-cfemail="fc9f9392889d9f88bc98958a9592cf88999f94d29f9391">consulting@divin3tech.com</span></a>
+                        <a href="mailto:contact@divin3tech.com" style="border-bottom: 1px solid var(--gold);">contact@divin3tech.com</a>
                     </div>
                     <div class="contact-info-item">
                         <p class="contact-info-label">Call Us</p>
@@ -1177,12 +1177,21 @@
     <!-- HubSpot Forms Embed (uncomment when ready) -->
     <!-- <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script> -->
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Mobile nav — close when link clicked
-        document.querySelectorAll('.nav-links a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.querySelector('.nav-links').classList.remove('open');
-            });
+    <script>
+        // Mobile nav — close when any link is clicked (event delegation)
+        document.querySelector('.nav-links').addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                this.classList.remove('open');
+            }
+        });
+
+        // Close menu when tapping outside
+        document.addEventListener('click', function(e) {
+            var nav = document.querySelector('.nav-links');
+            var hamburger = document.querySelector('.hamburger');
+            if (nav.classList.contains('open') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('open');
+            }
         });
 
         // Resource selection
@@ -1259,4 +1268,3 @@
                 console.log('HubSpot submission successful:', result);
                 showResourceSuccess();
             })
-          
